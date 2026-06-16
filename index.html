@@ -104,7 +104,6 @@
 </head>
 <body>
 
-<!-- מסך התקנון / כניסה ראשונית -->
 <div id="tosModal" class="modal" style="background: rgba(15, 23, 42, 0.95); z-index: 99999;">
     <div class="modal-content" style="text-align: center; border: 4px solid var(--primary-color); margin-top: 10%;">
         <h2 style="color: var(--primary-color); font-size: 26px; margin-bottom:15px;">ברוכים הבאים למערכת! 👋</h2>
@@ -129,20 +128,16 @@
     </div>
 </div>
 
-<!-- חלון בחירת פורמט הורדה (מעודכן לטלפונים) -->
 <div id="exportModal" class="modal" style="z-index: 4000;">
     <div class="modal-content" style="max-width: 400px; text-align: center;">
         <h3 style="color:var(--primary-color); margin-bottom:5px;">📥 בחירת פורמט הורדה</h3>
         <p style="font-size:14px; color:#64748b; margin-bottom:20px;">באיזה קובץ תרצי לשמור את הדוח?</p>
-        
         <button class="btn-success" style="background:#ef4444; margin-bottom:10px;" onclick="executeExport('pdf')">📄 שמירה כ-PDF (או הדפסה)</button>
         <button class="btn-success" style="background:#2563eb; margin-bottom:10px;" onclick="executeExport('word')">📝 קובץ Word (לצורך עריכה)</button>
-        
         <button class="btn-raw" style="margin-top:10px;" onclick="closeModal('exportModal')">ביטול</button>
     </div>
 </div>
 
-<!-- חלון מעבר בין מכשירים -->
 <div id="transferModal" class="modal" style="z-index: 9999;">
     <div class="modal-content" style="text-align: center;">
         <h2 style="color: var(--primary-color);">🔄 מעבר למכשיר אחר</h2>
@@ -208,7 +203,6 @@
         </div>
     </div>
 
-    <!-- התראת גיבוי מעודנת -->
     <div id="forcedBackupModal" class="modal" style="background: rgba(13, 148, 136, 0.95); z-index: 9999;">
         <div class="modal-content" style="text-align: center; border: 4px solid var(--secondary-color); margin-top: 5%;">
             <h2 style="color: var(--secondary-color); font-size: 24px;">💡 רגע לפני שמתחילים...</h2>
@@ -224,15 +218,11 @@
     <div class="container">
         <button onclick="openSettingsModal()" style="position: absolute; left: 15px; top: 15px; width: 45px; height: 45px; border-radius: 50%; background: #f1f5f9; color: #475569; padding: 0; font-size: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border:1px solid #cbd5e1; z-index: 100;">⚙️</button>
 
-<div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 15px; padding-top: 10px;">
-    <img id="mainLogo" src="" alt="לוגו" style="max-height: 90px; width: auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05)); display:none; margin-bottom: 10px;">
-    <div>
-        <h1 style="color: var(--primary-color); margin: 0; font-size: 32px; font-weight: 900;">CliniKit</h1>
-        <p style="color: var(--secondary-color); font-weight: bold; margin-top: 5px; margin-bottom: 0;">פשוט לנהל קליניקה</p>
-    </div>
-</div>
+        <div style="text-align: center; margin-bottom: 25px; padding-top: 15px;">
+            <h1 style="color: var(--primary-color); margin: 0; font-size: 32px; font-weight: 900;">CliniKit</h1>
+            <p style="color: var(--secondary-color); font-weight: bold; margin-top: 5px; margin-bottom: 0;">פשוט לנהל קליניקה</p>
+        </div>
         
-        <!-- מסך מטופלים -->
         <div id="view-patients" class="view-screen active-screen">
             <div class="action-bar" style="margin-bottom:15px; justify-content:center;">
                 <button class="btn-raw" style="border-color:var(--primary-color); color:var(--primary-color); font-weight:bold; border-radius:15px; margin-top:0; width:100%;" onclick="openTransferModal()">🔄 גיבוי ומעבר למכשיר אחר</button>
@@ -252,7 +242,6 @@
             <button class="btn-raw" style="border-style:dashed; margin-top:20px; border-radius:15px; width:100%;" onclick="showScreen('view-archive')">🗄️ ארכיון מטופלים</button>
         </div>
 
-        <!-- מסך ארכיון -->
         <div id="view-archive" class="view-screen">
             <div class="action-bar">
                 <button class="btn-small btn-back" onclick="showScreen('view-patients')">🔙 חזרה לרשימת המטופלים</button>
@@ -262,7 +251,6 @@
             <div id="archivedPatientList"></div>
         </div>
 
-        <!-- מסך פרטי מטופל (ראשי) -->
         <div id="view-patient-detail" class="view-screen">
             <div class="action-bar" style="margin-bottom: 5px;">
                 <button class="btn-small btn-back" onclick="goBackToPatientsOrArchive()">🔙 חזרה לרשימת המטופלים</button>
@@ -300,7 +288,6 @@
                 <div class="patient-menu-card full-width" onclick="openSection('sec-next')"><span class="p-icon">💡</span><span class="p-text" style="font-size:16px;">תכנון הטיפול הבא</span></div>
             </div>
 
-            <!-- לשוניות מטופל -->
             <div id="sec-session" class="patient-section">
                 <button class="btn-small btn-back" style="margin-bottom:10px;" onclick="closeSection()">🔙 חזרה לתפריט התיק</button>
                 <div class="action-box" style="margin-top:0;">
@@ -612,111 +599,6 @@
             </div>
         </div>
 
-        <!-- מודלים פנימיים -->
-        <div id="addPatientModal" class="modal">
-            <div class="modal-content">
-                <h3>👥 רישום מטופל/ת חדש/ה</h3>
-                <div style="display:flex; gap:10px;">
-                    <div style="flex:1;"><h4>שם פרטי (חובה):</h4><input type="text" id="newPatientFirstName"></div>
-                    <div style="flex:1;"><h4>שם משפחה (חובה):</h4><input type="text" id="newPatientLastName"></div>
-                </div>
-                <div style="display:flex; gap:10px;">
-                    <div style="flex:1;"><h4>ת.ז:</h4><input type="text" id="newPatientId"></div>
-                    <div style="flex:1;"><h4>טלפון הורה 1:</h4><input type="tel" id="newPatientPhone"></div>
-                </div>
-                <div style="display:flex; gap:10px;">
-                    <div style="flex:1;"><h4>תאריך לידה:</h4><input type="date" id="newPatientDob"></div>
-                    <div style="flex:1;"><h4>מכסת טיפולים (לא חובה):</h4><input type="number" id="newPatientTotalSessions" placeholder="למשל 12"></div>
-                </div>
-                <h4>אימייל:</h4><input type="email" id="newPatientEmail">
-                <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #cbd5e1;">
-                    <h4>תעריף קבוע למפגש (₪):</h4>
-                    <input type="number" id="newPatientBasePrice" value="300">
-                </div>
-                
-                <button class="btn-success" onclick="saveNewPatient(false)">💾 פתיחת תיק</button>
-                <button class="btn-primary" style="background:#0ea5e9; color:white; border-radius:18px; font-weight:bold; padding:15px; width:100%; margin-top:10px; border:none; cursor:pointer;" onclick="saveNewPatient(true)">📅 פתיחת תיק ומעבר לשיבוץ ביומן</button>
-                <button class="btn-raw" style="width:100%; margin-top:10px;" onclick="closeModal('addPatientModal')">ביטול</button>
-            </div>
-        </div>
-
-        <div id="manageDebtReceiptModal" class="modal">
-            <div class="modal-content">
-                <h3 style="color:var(--primary-color);">💰 ניהול חובות וקבלות</h3>
-                <p style="font-size:14px; margin-bottom:15px; color:#64748b;">סמני איזה מהמפגשים שולמו או שעבורם הופקה קבלה:</p>
-                <div id="manageDebtReceiptList" style="max-height:300px; overflow-y:auto; margin-bottom:15px;"></div>
-                
-                <div style="background:#f0fdfa; padding:15px; border-radius:10px; border:1px solid var(--primary-color); margin-bottom:15px;">
-                    <h4 style="margin:0 0 10px 0;">פעולות מהירות:</h4>
-                    <button class="btn-raw" style="margin-bottom:10px; padding:10px; background:white; font-size:14px;" onclick="copyMissingReceiptDates()">📋 העתק תאריכים שחסרה בהם קבלה</button>
-                    <button class="btn-success" style="margin:0; padding:10px; width:100%; font-size:14px; background:#0284c7; border-radius:12px;" onclick="openSavedReceiptWebsite()">🌐 מעבר לאתר חשבוניות / קבלות</button>
-                </div>
-                <button class="btn-success" onclick="saveDebtReceiptUpdates()">💾 שמור שינויים</button>
-                <button class="btn-raw" style="width:100%; margin-top:10px;" onclick="closeModal('manageDebtReceiptModal')">ביטול</button>
-            </div>
-        </div>
-
-        <div id="debtReminderModal" class="modal">
-            <div class="modal-content">
-                <h3 style="color:#ea580c;">⚠️ דוח מצב חשבון פתוח</h3>
-                <div id="debtReminderContent" style="background:#fff7ed; padding:15px; border-radius:10px; font-size:15px; line-height:1.5; margin-bottom:15px; border:1px solid #fed7aa; white-space:pre-wrap;"></div>
-                <div style="display:flex; gap:10px;">
-                    <button class="btn-wa" style="flex:1; margin:0;" onclick="executeDebtReminder('wa')">💬 שליחה בווצאפ</button>
-                    <button class="btn-email btn-link-style" style="flex:1; margin:0;" onclick="executeDebtReminder('email')">📧 שליחה במייל</button>
-                </div>
-                <button class="btn-raw" style="width:100%; margin-top:10px;" onclick="closeModal('debtReminderModal')">ביטול</button>
-            </div>
-        </div>
-
-        <div id="addFolderModal" class="modal"><div class="modal-content"><h3>📁 תיקייה חדשה</h3><input type="text" id="newFolderName" placeholder="שם התיקייה"><button class="btn-success" onclick="createNewFolder()">שמור</button><button class="btn-raw" style="width:100%; margin-top:10px;" onclick="closeModal('addFolderModal')">ביטול</button></div></div>
-        
-        <div id="addExerciseModal" class="modal">
-            <div class="modal-content">
-                <h3 id="exModalTitle">➕ תרגיל חדש לבנק</h3>
-                <select id="exerciseFolderSelect"></select>
-                <input type="text" id="addExName" placeholder="שם התרגיל">
-                <textarea id="addExDesc" rows="3" placeholder="הסבר קצר..."></textarea>
-                <div class="cam-btn-wrap" style="margin-top:15px;">
-                    <button class="btn-raw" style="pointer-events:none; margin:0; width:100%; border-style:dashed;">📷 העלאת תמונה או צילום מהמכשיר</button>
-                    <input type="file" id="addExImage" accept="image/*" onchange="handleAddExerciseImageUpload(this)">
-                </div>
-                <div id="imgPreviewAddEx" style="height:80px; margin-top:10px; background-size:contain; background-repeat:no-repeat; background-position:center;"></div>
-                <button class="btn-success" onclick="saveExerciseToBank()">שמור לבנק</button>
-                <button class="btn-raw" style="width:100%; margin-top:10px;" onclick="closeModal('addExerciseModal')">ביטול</button>
-            </div>
-        </div>
-        
-        <div id="practiceModal" class="modal">
-            <div class="modal-content" style="max-width: 600px;">
-                <h3>📝 בניית תוכנית תרגול</h3>
-                <p style="font-size:14px; font-weight:bold; color:var(--primary-color); margin-bottom:5px;">1. בחרי תרגילים מהבנק:</p>
-                <div id="practiceBankSelection" style="max-height:200px; overflow-y:auto; background:#f8fafc; padding:10px; border-radius:10px; border:1px solid #cbd5e1;"></div>
-                <p style="font-size:14px; font-weight:bold; color:var(--primary-color); margin-top:20px; margin-bottom:5px;">2. או הוסיפי תרגיל ספציפי חדש (צלמי!):</p>
-                <div style="background:#fff; padding:15px; border-radius:15px; border:2px dashed var(--light-accent);">
-                    <input type="text" id="customExName" placeholder="שם התרגיל (למשל: בניית מגדל)" style="margin-top:0;">
-                    <textarea id="customExDesc" rows="2" placeholder="הסבר להורים..."></textarea>
-                    <div style="display:flex; gap:10px; align-items:center; margin-top:10px;">
-                        <div class="cam-btn-wrap" style="flex:1;">
-                            <button class="btn-success" style="pointer-events:none; margin:0; width:100%; padding:10px; font-size:14px;">📷 צלמי עכשיו</button>
-                            <input type="file" id="customExImage" accept="image/*" capture="environment" onchange="handleCustomImageUpload(this)">
-                        </div>
-                        <div id="imgPreviewCustom" style="width:40px; height:40px; border-radius:8px; border:1px solid #cbd5e1; background-size:cover; background-position:center; display:none;"></div>
-                    </div>
-                    <button class="btn-raw" style="margin-top:10px; padding:10px; border-color:var(--primary-color); color:var(--primary-color);" onclick="addCustomExerciseToProgram()">➕ הוסף לתוכנית</button>
-                </div>
-                <div style="background:#fffaf5; border-radius:15px; padding:15px; margin-top:20px; border:1px solid #fed7aa;">
-                    <h4 style="margin:0 0 10px 0; color:var(--secondary-color);">התרגילים שנבחרו לתוכנית:</h4>
-                    <ul id="selectedPracticeList" style="list-style:none; padding:0; margin:0; font-size:14px;"></ul>
-                    <button class="btn-success" style="margin-top:15px; background:#3b82f6;" onclick="showExportOptions('תכנית_תרגול', getPracticeHTML())">📥 הורדת קובץ תרגול לבית</button>
-                    <div style="display:flex; gap:10px; margin-top:10px;">
-                        <button class="btn-wa" style="flex:1; border-radius:15px; padding:12px; font-size:14px; margin:0;" onclick="sendPracticeTextWA()">💬 שליחת טקסט לווצאפ</button>
-                        <button class="btn-email btn-link-style" style="flex:1; border-radius:15px; padding:12px; font-size:14px; margin:0;" onclick="sendPracticeTextEmail()">📧 שליחת טקסט למייל</button>
-                    </div>
-                </div>
-                <button class="btn-raw" style="width:100%; margin-top:15px;" onclick="closeModal('practiceModal')">סגור</button>
-            </div>
-        </div>
-
         <div id="settingsModal" class="modal">
             <div class="modal-content">
                 <h3>⚙️ הגדרות, זמנים ומיתוג</h3>
@@ -734,8 +616,8 @@
                     
                     <label style="font-weight:bold; display:block; margin-top:15px; margin-bottom:5px;">פלטת צבעים:</label>
                    <select id="themeSelect" onchange="previewTheme()">
-                        <option value="default">פלטה גנרית (נקייה - טורקיז כהה ואפור)</option>
                         <option value="vibrant">הרמוניה תוססת (טורקיז, קורל וחרדל)</option>
+                        <option value="default">פלטה גנרית (נקייה - טורקיז כהה ואפור)</option>
                         <option value="classic">ים תיכוני (כחול קלאסי, ירוק רענן)</option>
                         <option value="warm">אדמה חמימה (חמרה ומרווה)</option>
                         <option value="calm">פסטל מרגיע (סגול רך וורוד)</option>
@@ -750,7 +632,6 @@
             </div>
         </div>
 
-        <!-- תחתית האפליקציה: קרדיט קבוע -->
         <div style="text-align: center; padding: 20px; font-size: 13px; color: #94a3b8; margin-top: 30px; border-top: 1px dashed #e2e8f0; line-height: 1.5;" class="no-print">
             &copy; כל הזכויות שמורות לאסתר בן פורת | 054-6703332 | esterayelet@gmail.com <br>
             <small style="display:block; margin-top:5px; font-weight:bold;">אין להעתיק או להעביר תוכנה זו ללא אישור מפורש מהמפתחת.</small>
@@ -787,7 +668,7 @@
                 return;
             }
         }
-        const t = THEMES[themeName] || THEMES.default;
+        const t = THEMES[themeName] || THEMES.vibrant; // ברירת המחדל החדשה
         document.documentElement.style.setProperty('--primary-color', t.p);
         document.documentElement.style.setProperty('--secondary-color', t.s);
         document.documentElement.style.setProperty('--mustard-color', t.m);
@@ -796,6 +677,23 @@
 
     function previewTheme() {
         applyTheme(document.getElementById('themeSelect').value);
+    }
+
+    // פונקציית העצירה המוחלטת של ההקלטה
+    function stopDictationIfActive() {
+        if (typeof isDictating !== 'undefined' && isDictating) {
+            isDictating = false;
+            if (typeof activeRecognition !== 'undefined' && activeRecognition) {
+                try { activeRecognition.stop(); } catch(e) {}
+            }
+            ['btnVoice', 'btnVoiceNext'].forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) {
+                    btn.innerHTML = id === 'btnVoiceNext' ? "🎤 הקלטה קולית לתכנון" : "🎤 הקלטה קולית";
+                    btn.style.color = "#0284c7";
+                }
+            });
+        }
     }
 
     // === מנגנון בחירת פורמט הורדה חכם עם פתרון למובייל ===
@@ -855,14 +753,12 @@
             </div>
         `;
         
-        // הגדלת זמן ההשהיה במיוחד לדפדפנים בנייד
+        // תיקון למובייל: הפעלת ההדפסה באופן מיידי ללא setTimeout שחוסם פופאפים
+        window.print();
         setTimeout(() => {
-            window.print();
-            setTimeout(() => {
-                printArea.innerHTML = '';
-                document.title = originalTitle;
-            }, 2000);
-        }, 500);
+            printArea.innerHTML = '';
+            document.title = originalTitle;
+        }, 1000);
     }
 
     // ייצוא וורד מתקדם עם תמיכה בשיתוף למובייל
@@ -874,7 +770,6 @@
 
         const blob = new Blob(['\ufeff', html], { type: 'application/msword' });
         
-        // בדיקה האם המכשיר תומך בשיתוף ישיר (אייפון ואנדרואיד)
         try {
             const file = new File([blob], filename + '.doc', { type: 'application/msword' });
             if (navigator.canShare && navigator.canShare({ files: [file] })) {
@@ -887,24 +782,22 @@
             }
         } catch(e) { }
 
-        // במידה וזה מחשב רגיל - הורדה קלאסית עם מנגנון מותאם
+        // הורדה בטוחה לנייד
         const url = URL.createObjectURL(blob);
         const downloadLink = document.createElement("a");
         downloadLink.href = url;
         downloadLink.download = filename + '.doc';
-        downloadLink.target = "_blank";
         document.body.appendChild(downloadLink);
         downloadLink.click();
         setTimeout(() => {
             document.body.removeChild(downloadLink);
             URL.revokeObjectURL(url);
-        }, 1000);
+        }, 500);
     }
 
     // כלים למייל וניווט
     function openMailto(email, subject, body) {
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        
         if (isMobile) {
             window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body || '')}`;
         } else {
@@ -923,75 +816,18 @@
     }
 
     function handleLogoUpload(input) {
-        if (input.files && input.files[0]) {
-            const reader = new FileReader(); 
-            reader.onload = function (e) {
-                const img = new Image(); 
-                img.onload = function() {
-                    const canvas = document.createElement('canvas'); 
-                    const MAX_WIDTH = 300; 
-                    let width = img.width; 
-                    let height = img.height;
-                    if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; }
-                    canvas.width = width; canvas.height = height; 
-                    const ctx = canvas.getContext('2d'); 
-                    ctx.drawImage(img, 0, 0, width, height);
-                    const base64 = canvas.toDataURL('image/png', 0.8); 
-                    localStorage.setItem('clinicCustomLogo', base64);
-                    
-                    try {
-                        const imgData = ctx.getImageData(10, 10, width - 20, height - 20).data;
-                        let r=0, g=0, b=0, count=0;
-                        for(let i=0; i<imgData.length; i+=20) {
-                            r += imgData[i]; g += imgData[i+1]; b += imgData[i+2]; count++;
-                        }
-                        r = Math.floor(r/count); g = Math.floor(g/count); b = Math.floor(b/count);
-                        const hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-                        
-                        const autoTheme = { p: hex, s: '#475569', m: '#eab348', l: hex + '15' };
-                        localStorage.setItem('clinicAutoTheme', JSON.stringify(autoTheme));
-                        localStorage.setItem('clinicTheme', 'auto');
-                    } catch(err) {
-                        localStorage.setItem('clinicTheme', 'default');
-                    }
-
-                    updateLogoDisplay();
-                    applyTheme(localStorage.getItem('clinicTheme'));
-                    alert("הלוגו נקלט והמערכת התאימה את הצבעים אוטומטית!");
-                }; 
-                img.src = e.target.result;
-            }; 
-            reader.readAsDataURL(input.files[0]);
-        }
+        // בוטל לממשק, אבל נשאר בקוד שלא ישבר אם משהו קורא לו בטעות
     }
 
     function removeLogo() {
-        localStorage.setItem('clinicCustomLogo', 'none');
-        localStorage.removeItem('clinicAutoTheme');
-        localStorage.setItem('clinicTheme', 'default');
-        updateLogoDisplay();
-        applyTheme('default');
+        // בוטל
     }
 
     function updateLogoDisplay() {
-        const savedLogo = localStorage.getItem('clinicCustomLogo');
-        const mainLogo = document.getElementById('mainLogo');
-        const autoOpt = document.getElementById('autoThemeOption');
-        if (!mainLogo) return;
-
-        if (savedLogo && savedLogo !== 'none') {
-            mainLogo.src = savedLogo;
-            mainLogo.style.display = 'block';
-            if(autoOpt) autoOpt.style.display = 'block';
-        } else {
-            mainLogo.style.display = 'none';
-            if(autoOpt) autoOpt.style.display = 'none';
-        }
+        // בוטל
     }
 
     function getLogoHtmlForPrint() {
-        const savedLogo = localStorage.getItem('clinicCustomLogo');
-        if(savedLogo && savedLogo !== 'none') return `<img src="${savedLogo}" style="max-height:80px;">`;
         return '';
     }
 
@@ -1266,16 +1102,32 @@
             return;
         }
         
-        const tomorrowPatients = patients.filter(p => !p.archived && p.weeklyDay === day && p.weeklyTime);
-        tomorrowPatients.sort((a,b) => a.weeklyTime.localeCompare(b.weeklyTime));
+        let items = [];
+
+        // 1. הוספת מטופלים קבועים
+        patients.forEach((p, idx) => {
+            if (!p.archived && p.weeklyDay === day && p.weeklyTime) {
+                items.push({ time: p.weeklyTime, text: p.name, phone: p.parentPhone1, isBreak: false });
+            }
+        });
+
+        // 2. הוספת פגישות/אירועים חד פעמיים מהיומן
+        breaks.forEach(b => {
+            if (b.day === day && b.time && b.isOther) {
+                items.push({ time: b.time, text: b.title, phone: null, isBreak: true });
+            }
+        });
+
+        items.sort((a,b) => a.time.localeCompare(b.time));
         
-        if (tomorrowPatients.length === 0) {
-            cont.innerHTML = "<p style='font-size:14px; text-align:center;'>אין טיפולים משובצים למחר.</p>";
+        if (items.length === 0) {
+            cont.innerHTML = "<p style='font-size:14px; text-align:center;'>אין שיבוצים ביומן למחר.</p>";
         } else {
             let html = "<ul style='list-style:none; padding:0; margin:0;'>";
-            tomorrowPatients.forEach(p => {
-                let waBtn = p.parentPhone1 ? `<button class='btn-small btn-wa' style='padding:4px 8px; font-size:12px;' onclick="openExternalApp('https://wa.me/${p.parentPhone1.replace(/\D/g,'').replace(/^0/,'972')}?text=${encodeURIComponent('היי! מזכירה שיש לנו תור מחר בשעה ' + p.weeklyTime + '. נתראה!')}')">💬 תזכורת</button>` : '';
-                html += `<li style='background:white; padding:8px; border-radius:8px; margin-bottom:5px; display:flex; justify-content:space-between; align-items:center; border:1px solid #cbd5e1;'><span style='font-size:14px;'><b>${p.weeklyTime}</b> - ${p.name}</span> ${waBtn}</li>`;
+            items.forEach(item => {
+                let waBtn = item.phone ? `<button class='btn-small btn-wa' style='padding:4px 8px; font-size:12px;' onclick="openExternalApp('https://wa.me/${item.phone.replace(/\D/g,'').replace(/^0/,'972')}?text=${encodeURIComponent('היי! מזכירה שיש לנו תור מחר בשעה ' + item.time + '. נתראה!')}')">💬 תזכורת</button>` : '';
+                let icon = item.isBreak ? '⭐' : '👤';
+                html += `<li style='background:white; padding:8px; border-radius:8px; margin-bottom:5px; display:flex; justify-content:space-between; align-items:center; border:1px solid #cbd5e1;'><span style='font-size:14px;'><b>${item.time}</b> - ${icon} ${item.text}</span> ${waBtn}</li>`;
             });
             html += "</ul>";
             cont.innerHTML = html;
@@ -1330,7 +1182,6 @@
         document.getElementById('patientMenuGrid').style.display = 'grid';
     }
 
-    // === תיקון באג הקלטה כפולה לאנדרואיד (שיאומי וכו') ===
     let isDictating = false;
     let activeRecognition = null;
     let originalTextForDictation = "";
@@ -1342,13 +1193,7 @@
         const ta = document.getElementById(targetId);
         
         if (isDictating) {
-            isDictating = false;
-            if (activeRecognition) {
-                activeRecognition.onend = null; 
-                activeRecognition.stop();
-            }
-            btn.innerHTML = "🎤 הקלטה קולית"; 
-            btn.style.color = "#0284c7";
+            stopDictationIfActive();
             return;
         }
 
@@ -1362,7 +1207,6 @@
         activeRecognition = new Speech(); 
         activeRecognition.lang = 'he-IL';
         
-        // החלפה ל-false מונעת את שכפול המילים במערכות אנדרואיד שמדפיסות כל משפט שוב ושוב
         activeRecognition.continuous = false; 
         activeRecognition.interimResults = true;
 
@@ -1385,13 +1229,12 @@
             ta.value = originalTextForDictation + (interimTranscript ? " " + interimTranscript : "");
         };
 
-        // מפעיל את ההקלטה מחדש באופן שקוף אחרי כל משפט
         activeRecognition.onend = () => { 
             if (isDictating) {
                 originalTextForDictation = ta.value.trim();
                 try { activeRecognition.start(); } catch(e) {}
             } else {
-                btn.innerHTML = "🎤 הקלטה קולית"; 
+                btn.innerHTML = btnId === 'btnVoiceNext' ? "🎤 הקלטה קולית לתכנון" : "🎤 הקלטה קולית"; 
                 btn.style.color = "#0284c7";
             }
         }; 
@@ -1832,7 +1675,15 @@
     }
 
     function saveGoals() { patients[currentPatientIndex].goals = document.getElementById('detailGoalsInput').value; patients[currentPatientIndex].dilemmas = document.getElementById('detailDilemmasInput').value; saveToMemory(); alert("נשמר!"); }
-    function saveNextPlan() { patients[currentPatientIndex].nextPlan = document.getElementById('nextPlanInput').value; saveToMemory(); openPatient(currentPatientIndex); alert("התכנון נשמר!"); }
+    
+    function saveNextPlan() { 
+        stopDictationIfActive();
+        patients[currentPatientIndex].nextPlan = document.getElementById('nextPlanInput').value; 
+        saveToMemory(); 
+        openPatient(currentPatientIndex); 
+        alert("התכנון נשמר!"); 
+    }
+    
     function markPlanDone() { if(confirm("למחוק את התכנון לטיפול הבא?")) { patients[currentPatientIndex].nextPlan = ""; saveToMemory(); openPatient(currentPatientIndex); } }
     
     function transferPlanToSession() {
@@ -1840,13 +1691,6 @@
         const currentNotes = document.getElementById('sessionNotes').value;
         document.getElementById('sessionNotes').value = (currentNotes ? currentNotes + "\n\n" : "") + "מתכנון הטיפול:\n" + p.nextPlan;
         p.nextPlan = ""; saveToMemory(); document.getElementById('nextPlanAlert').style.display = 'none'; openSection('sec-session');
-        // הוספת השורות האלו לפני פעולת השמירה או בסופה:
-    if (isDictating) {
-        isDictating = false;
-        if (activeRecognition) { activeRecognition.stop(); }
-        const btnVoice = document.getElementById('btnVoice');
-        if (btnVoice) { btnVoice.innerHTML = "🎤 הקלטה קולית"; btnVoice.style.color = "#0284c7"; }
-    }
     }
 
     function archivePatient() { if(confirm("לסיים סדרת טיפולים ולהעביר את התיק לארכיון?")) { patients[currentPatientIndex].archived = true; patients[currentPatientIndex].weeklyDay = null; saveToMemory(); renderWaitingList(); showScreen('view-patients'); } }
@@ -1861,6 +1705,8 @@
     }
     
     function saveSession() {
+        stopDictationIfActive();
+        
         const date = document.getElementById('sessionDate').value; const notes = document.getElementById('sessionNotes').value;
         if(!date || !notes) return alert("חובה למלא תאריך ותיעוד!");
         
@@ -1897,13 +1743,6 @@
         } else {
             openPatient(currentPatientIndex); openSection('sec-history');
         }
-        // הוספת השורות האלו לפני פעולת השמירה או בסופה:
-    if (isDictating) {
-        isDictating = false;
-        if (activeRecognition) { activeRecognition.stop(); }
-        const btnVoice = document.getElementById('btnVoice');
-        if (btnVoice) { btnVoice.innerHTML = "🎤 הקלטה קולית"; btnVoice.style.color = "#0284c7"; }
-    }
     }
     
     let editingSessionIndex = -1;
@@ -1939,6 +1778,8 @@
     }
 
     function saveEditedSession() {
+        stopDictationIfActive();
+        
         const s = patients[currentPatientIndex].sessions[editingSessionIndex];
         s.date = document.getElementById('editSessionDate').value;
         s.number = document.getElementById('editSessionNumber').value;
@@ -2222,7 +2063,7 @@
 
     function openSettingsModal() {
         let themeField = document.getElementById('themeSelect');
-        if(themeField) themeField.value = localStorage.getItem('clinicTheme') || 'default';
+        if(themeField) themeField.value = localStorage.getItem('clinicTheme') || 'vibrant';
 
         const cont = document.getElementById('wh-container'); cont.innerHTML = "";
         for(let i=0; i<=5; i++) {
@@ -2250,7 +2091,7 @@
             workingHours[i].location = document.getElementById(`whL_${i}`).value; 
             workingHours[i].start = document.getElementById(`whS_${i}`).value; workingHours[i].end = document.getElementById(`whE_${i}`).value;
         }
-        saveToMemory(); closeModal('settingsModal'); renderDaysGrid(); applyTheme(localStorage.getItem('clinicTheme') || 'default'); alert("ההגדרות והמיתוג נשמרו בהצלחה!");
+        saveToMemory(); closeModal('settingsModal'); renderDaysGrid(); applyTheme(localStorage.getItem('clinicTheme') || 'vibrant'); alert("ההגדרות והמיתוג נשמרו בהצלחה!");
     }
     
     function renderDaysGrid() {
@@ -2579,9 +2420,8 @@
     }
 
     window.onload = () => {
-        const savedTheme = localStorage.getItem('clinicTheme') || 'default';
+        const savedTheme = localStorage.getItem('clinicTheme') || 'vibrant';
         applyTheme(savedTheme);
-        updateLogoDisplay();
 
         let now = new Date();
         let fY = document.getElementById('financeYear');

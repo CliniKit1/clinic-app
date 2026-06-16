@@ -599,137 +599,6 @@
             </div>
         </div>
 
-        <div id="addPatientModal" class="modal">
-            <div class="modal-content">
-                <h3>👥 רישום מטופל/ת חדש/ה</h3>
-                <div style="display:flex; gap:10px;">
-                    <div style="flex:1;"><h4>שם פרטי (חובה):</h4><input type="text" id="newPatientFirstName"></div>
-                    <div style="flex:1;"><h4>שם משפחה (חובה):</h4><input type="text" id="newPatientLastName"></div>
-                </div>
-                <div style="display:flex; gap:10px;">
-                    <div style="flex:1;"><h4>ת.ז:</h4><input type="text" id="newPatientId"></div>
-                    <div style="flex:1;"><h4>טלפון הורה 1:</h4><input type="tel" id="newPatientPhone"></div>
-                </div>
-                <div style="display:flex; gap:10px;">
-                    <div style="flex:1;"><h4>תאריך לידה:</h4><input type="date" id="newPatientDob"></div>
-                    <div style="flex:1;"><h4>מכסת טיפולים (לא חובה):</h4><input type="number" id="newPatientTotalSessions" placeholder="למשל 12"></div>
-                </div>
-                <h4>אימייל:</h4><input type="email" id="newPatientEmail">
-                <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #cbd5e1;">
-                    <h4>תעריף קבוע למפגש (₪):</h4>
-                    <input type="number" id="newPatientBasePrice" value="300">
-                </div>
-                
-                <button class="btn-success" onclick="saveNewPatient(false)">💾 פתיחת תיק</button>
-                <button class="btn-primary" style="background:#0ea5e9; color:white; border-radius:18px; font-weight:bold; padding:15px; width:100%; margin-top:10px; border:none; cursor:pointer;" onclick="saveNewPatient(true)">📅 פתיחת תיק ומעבר לשיבוץ ביומן</button>
-                <button class="btn-raw" style="width:100%; margin-top:10px;" onclick="closeModal('addPatientModal')">ביטול</button>
-            </div>
-        </div>
-
-        <div id="addPatientModal" class="modal">
-    <div class="modal-content">
-        <h3>👥 רישום מטופל/ת חדש/ה</h3>
-        <div style="display:flex; gap:10px;">
-            <div style="flex:1;"><h4>שם פרטי (חובה):</h4><input type="text" id="newPatientFirstName"></div>
-            <div style="flex:1;"><h4>שם משפחה (חובה):</h4><input type="text" id="newPatientLastName"></div>
-        </div>
-        <div style="display:flex; gap:10px;">
-            <div style="flex:1;"><h4>ת.ז:</h4><input type="text" id="newPatientId"></div>
-            <div style="flex:1;"><h4>טלפון הורה 1:</h4><input type="tel" id="newPatientPhone"></div>
-        </div>
-        <div style="display:flex; gap:10px;">
-            <div style="flex:1;"><h4>תאריך לידה:</h4><input type="date" id="newPatientDob"></div>
-            <div style="flex:1;"><h4>מכסת טיפולים (לא חובה):</h4><input type="number" id="newPatientTotalSessions" placeholder="למשל 12"></div>
-        </div>
-        <h4>אימייל:</h4><input type="email" id="newPatientEmail">
-        <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #cbd5e1;">
-            <h4>תעריף קבוע למפגש (₪):</h4>
-            <input type="number" id="newPatientBasePrice" value="300">
-        </div>
-        
-        <button class="btn-success" onclick="saveNewPatient(false)">💾 פתיחת תיק</button>
-        <button class="btn-primary" style="background:#0ea5e9; color:white; border-radius:18px; font-weight:bold; padding:15px; width:100%; margin-top:10px; border:none; cursor:pointer;" onclick="saveNewPatient(true)">📅 פתיחת תיק ומעבר לשיבוץ ביומן</button>
-        <button class="btn-raw" style="width:100%; margin-top:10px;" onclick="closeModal('addPatientModal')">ביטול</button>
-    </div>
-</div>
-
-        <div id="manageDebtReceiptModal" class="modal">
-            <div class="modal-content">
-                <h3 style="color:var(--primary-color);">💰 ניהול חובות וקבלות</h3>
-                <p style="font-size:14px; margin-bottom:15px; color:#64748b;">סמני איזה מהמפגשים שולמו או שעבורם הופקה קבלה:</p>
-                <div id="manageDebtReceiptList" style="max-height:300px; overflow-y:auto; margin-bottom:15px;"></div>
-                
-                <div style="background:#f0fdfa; padding:15px; border-radius:10px; border:1px solid var(--primary-color); margin-bottom:15px;">
-                    <h4 style="margin:0 0 10px 0;">פעולות מהירות:</h4>
-                    <button class="btn-raw" style="margin-bottom:10px; padding:10px; background:white; font-size:14px;" onclick="copyMissingReceiptDates()">📋 העתק תאריכים שחסרה בהם קבלה</button>
-                    <button class="btn-success" style="margin:0; padding:10px; width:100%; font-size:14px; background:#0284c7; border-radius:12px;" onclick="openSavedReceiptWebsite()">🌐 מעבר לאתר חשבוניות / קבלות</button>
-                </div>
-                <button class="btn-success" onclick="saveDebtReceiptUpdates()">💾 שמור שינויים</button>
-                <button class="btn-raw" style="width:100%; margin-top:10px;" onclick="closeModal('manageDebtReceiptModal')">ביטול</button>
-            </div>
-        </div>
-
-        <div id="debtReminderModal" class="modal">
-            <div class="modal-content">
-                <h3 style="color:#ea580c;">⚠️ דוח מצב חשבון פתוח</h3>
-                <div id="debtReminderContent" style="background:#fff7ed; padding:15px; border-radius:10px; font-size:15px; line-height:1.5; margin-bottom:15px; border:1px solid #fed7aa; white-space:pre-wrap;"></div>
-                <div style="display:flex; gap:10px;">
-                    <button class="btn-wa" style="flex:1; margin:0;" onclick="executeDebtReminder('wa')">💬 שליחה בווצאפ</button>
-                    <button class="btn-email btn-link-style" style="flex:1; margin:0;" onclick="executeDebtReminder('email')">📧 שליחה במייל</button>
-                </div>
-                <button class="btn-raw" style="width:100%; margin-top:10px;" onclick="closeModal('debtReminderModal')">ביטול</button>
-            </div>
-        </div>
-
-        <div id="addFolderModal" class="modal"><div class="modal-content"><h3>📁 תיקייה חדשה</h3><input type="text" id="newFolderName" placeholder="שם התיקייה"><button class="btn-success" onclick="createNewFolder()">שמור</button><button class="btn-raw" style="width:100%; margin-top:10px;" onclick="closeModal('addFolderModal')">ביטול</button></div></div>
-        
-        <div id="addExerciseModal" class="modal">
-            <div class="modal-content">
-                <h3 id="exModalTitle">➕ תרגיל חדש לבנק</h3>
-                <select id="exerciseFolderSelect"></select>
-                <input type="text" id="addExName" placeholder="שם התרגיל">
-                <textarea id="addExDesc" rows="3" placeholder="הסבר קצר..."></textarea>
-                <div class="cam-btn-wrap" style="margin-top:15px;">
-                    <button class="btn-raw" style="pointer-events:none; margin:0; width:100%; border-style:dashed;">📷 העלאת תמונה או צילום מהמכשיר</button>
-                    <input type="file" id="addExImage" accept="image/*" onchange="handleAddExerciseImageUpload(this)">
-                </div>
-                <div id="imgPreviewAddEx" style="height:80px; margin-top:10px; background-size:contain; background-repeat:no-repeat; background-position:center;"></div>
-                <button class="btn-success" onclick="saveExerciseToBank()">שמור לבנק</button>
-                <button class="btn-raw" style="width:100%; margin-top:10px;" onclick="closeModal('addExerciseModal')">ביטול</button>
-            </div>
-        </div>
-        
-        <div id="practiceModal" class="modal">
-            <div class="modal-content" style="max-width: 600px;">
-                <h3>📝 בניית תוכנית תרגול</h3>
-                <p style="font-size:14px; font-weight:bold; color:var(--primary-color); margin-bottom:5px;">1. בחרי תרגילים מהבנק:</p>
-                <div id="practiceBankSelection" style="max-height:200px; overflow-y:auto; background:#f8fafc; padding:10px; border-radius:10px; border:1px solid #cbd5e1;"></div>
-                <p style="font-size:14px; font-weight:bold; color:var(--primary-color); margin-top:20px; margin-bottom:5px;">2. או הוסיפי תרגיל ספציפי חדש (צלמי!):</p>
-                <div style="background:#fff; padding:15px; border-radius:15px; border:2px dashed var(--light-accent);">
-                    <input type="text" id="customExName" placeholder="שם התרגיל (למשל: בניית מגדל)" style="margin-top:0;">
-                    <textarea id="customExDesc" rows="2" placeholder="הסבר להורים..."></textarea>
-                    <div style="display:flex; gap:10px; align-items:center; margin-top:10px;">
-                        <div class="cam-btn-wrap" style="flex:1;">
-                            <button class="btn-success" style="pointer-events:none; margin:0; width:100%; padding:10px; font-size:14px;">📷 צלמי עכשיו</button>
-                            <input type="file" id="customExImage" accept="image/*" capture="environment" onchange="handleCustomImageUpload(this)">
-                        </div>
-                        <div id="imgPreviewCustom" style="width:40px; height:40px; border-radius:8px; border:1px solid #cbd5e1; background-size:cover; background-position:center; display:none;"></div>
-                    </div>
-                    <button class="btn-raw" style="margin-top:10px; padding:10px; border-color:var(--primary-color); color:var(--primary-color);" onclick="addCustomExerciseToProgram()">➕ הוסף לתוכנית</button>
-                </div>
-                <div style="background:#fffaf5; border-radius:15px; padding:15px; margin-top:20px; border:1px solid #fed7aa;">
-                    <h4 style="margin:0 0 10px 0; color:var(--secondary-color);">התרגילים שנבחרו לתוכנית:</h4>
-                    <ul id="selectedPracticeList" style="list-style:none; padding:0; margin:0; font-size:14px;"></ul>
-                    <button class="btn-success" style="margin-top:15px; background:#3b82f6;" onclick="showExportOptions('תכנית_תרגול', getPracticeHTML())">📥 הורדת קובץ תרגול לבית</button>
-                    <div style="display:flex; gap:10px; margin-top:10px;">
-                        <button class="btn-wa" style="flex:1; border-radius:15px; padding:12px; font-size:14px; margin:0;" onclick="sendPracticeTextWA()">💬 שליחת טקסט לווצאפ</button>
-                        <button class="btn-email btn-link-style" style="flex:1; border-radius:15px; padding:12px; font-size:14px; margin:0;" onclick="sendPracticeTextEmail()">📧 שליחת טקסט למייל</button>
-                    </div>
-                </div>
-                <button class="btn-raw" style="width:100%; margin-top:15px;" onclick="closeModal('practiceModal')">סגור</button>
-            </div>
-        </div>
-
         <div id="settingsModal" class="modal">
             <div class="modal-content">
                 <h3>⚙️ הגדרות, זמנים ומיתוג</h3>
@@ -810,7 +679,6 @@
         applyTheme(document.getElementById('themeSelect').value);
     }
 
-    // פונקציית העצירה המוחלטת של ההקלטה
     function stopDictationIfActive() {
         if (typeof isDictating !== 'undefined' && isDictating) {
             isDictating = false;
@@ -827,7 +695,6 @@
         }
     }
 
-    // === מנגנון בחירת פורמט הורדה חכם עם פתרון למובייל ===
     let pendingExportFilename = "";
     let pendingExportHtml = "";
 
@@ -884,7 +751,6 @@
             </div>
         `;
         
-        // תיקון למובייל: מחיקת המסך רק לאחר סיום יצירת ה-PDF
         window.onafterprint = function() {
             printArea.innerHTML = '';
             document.title = originalTitle;
@@ -904,7 +770,6 @@
 
         const blob = new Blob(['\ufeff', html], { type: 'application/msword' });
         
-        // תיקון: מנגנון מוגן לגיבוי הורדה
         try {
             const file = new File([blob], filename + '.doc', { type: 'application/msword' });
             if (navigator.canShare && navigator.canShare({ files: [file] })) {
@@ -913,13 +778,12 @@
                     title: filename,
                     text: 'מצורף הקובץ מ-CliniKit'
                 }).catch(e => {
-                    triggerDownload(blob, filename); // Fallback
+                    triggerDownload(blob, filename); 
                 });
                 return; 
             }
         } catch(e) {}
 
-        // Fallback למחשב או למכשירים חסומים
         triggerDownload(blob, filename);
     }
 
@@ -936,7 +800,6 @@
         }, 500);
     }
 
-    // כלים למייל וניווט
     function openMailto(email, subject, body) {
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         if (isMobile) {
@@ -1234,14 +1097,12 @@
         
         let items = [];
 
-        // 1. הוספת מטופלים קבועים
         patients.forEach((p, idx) => {
             if (!p.archived && p.weeklyDay === day && p.weeklyTime) {
                 items.push({ time: p.weeklyTime, text: p.name, phone: p.parentPhone1, isBreak: false });
             }
         });
 
-        // 2. הוספת פגישות/אירועים חד פעמיים מהיומן
         breaks.forEach(b => {
             if (b.day === day && b.time && b.isOther) {
                 items.push({ time: b.time, text: b.title, phone: null, isBreak: true });
@@ -1389,82 +1250,57 @@
         arr.forEach(p => { list.innerHTML += `<div class="list-item archive" onclick="openPatient(${p.i})">${p.name}</div>`; });
     }
     
- function openAddPatientModal() {
-    let modal = document.getElementById('addPatientModal');
-    
-    // מנגנון הגנה: אם החלון נמחק מה-HTML בטעות, נייצר אותו מחדש אוטומטית!
-    if (!modal) {
-        const modalHTML = `
-        <div class="modal-content">
-            <h3>👥 רישום מטופל/ת חדש/ה</h3>
-            <div style="display:flex; gap:10px;">
-                <div style="flex:1;"><h4>שם פרטי (חובה):</h4><input type="text" id="newPatientFirstName"></div>
-                <div style="flex:1;"><h4>שם משפחה (חובה):</h4><input type="text" id="newPatientLastName"></div>
-            </div>
-            <div style="display:flex; gap:10px;">
-                <div style="flex:1;"><h4>ת.ז:</h4><input type="text" id="newPatientId"></div>
-                <div style="flex:1;"><h4>טלפון הורה 1:</h4><input type="tel" id="newPatientPhone"></div>
-            </div>
-            <div style="display:flex; gap:10px;">
-                <div style="flex:1;"><h4>תאריך לידה:</h4><input type="date" id="newPatientDob"></div>
-                <div style="flex:1;"><h4>מכסת טיפולים (לא חובה):</h4><input type="number" id="newPatientTotalSessions" placeholder="למשל 12"></div>
-            </div>
-            <h4>אימייל:</h4><input type="email" id="newPatientEmail">
-            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #cbd5e1;">
-                <h4>תעריף קבוע למפגש (₪):</h4>
-                <input type="number" id="newPatientBasePrice" value="300">
-            </div>
-            
-            <button class="btn-success" onclick="saveNewPatient(false)">💾 פתיחת תיק</button>
-            <button class="btn-primary" style="background:#0ea5e9; color:white; border-radius:18px; font-weight:bold; padding:15px; width:100%; margin-top:10px; border:none; cursor:pointer;" onclick="saveNewPatient(true)">📅 פתיחת תיק ומעבר לשיבוץ ביומן</button>
-            <button class="btn-raw" style="width:100%; margin-top:10px;" onclick="closeModal('addPatientModal')">ביטול</button>
-        </div>`;
+    function openAddPatientModal() {
+        let modal = document.getElementById('addPatientModal');
         
-        modal = document.createElement('div');
-        modal.id = 'addPatientModal';
-        modal.className = 'modal';
-        modal.innerHTML = modalHTML;
-        document.body.appendChild(modal);
-    }
-
-    // איפוס כל השדות
-    const fieldsToClear = [
-        'newPatientFirstName', 'newPatientLastName', 'newPatientId', 
-        'newPatientDob', 'newPatientPhone', 'newPatientEmail', 'newPatientTotalSessions'
-    ];
-    
-    fieldsToClear.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.value = "";
-    });
-
-    const priceEl = document.getElementById('newPatientBasePrice');
-    if (priceEl) priceEl.value = "300";
-
-    // פתיחת החלון
-    modal.style.display = 'block';
-}
-        const safeClear = (id, val) => {
-            const el = document.getElementById(id);
-            if (el) el.value = val;
-        };
-
-        safeClear('newPatientFirstName', "");
-        safeClear('newPatientLastName', "");
-        safeClear('newPatientId', "");
-        safeClear('newPatientDob', "");
-        safeClear('newPatientPhone', "");
-        safeClear('newPatientPhone2', "");
-        safeClear('newPatientEmail', "");
-        safeClear('newPatientBasePrice', "300");
-        safeClear('newPatientTotalSessions', "");
-
-        const modals = document.querySelectorAll('#addPatientModal');
-        if (modals.length > 0) {
-            modals.forEach(m => m.style.display = 'block');
-        } else {
-            alert("שגיאה: חלון הוספת מטופל לא נמצא בקוד.");
+        if (!modal) {
+            const modalHTML = `
+            <div class="modal-content">
+                <h3>👥 רישום מטופל/ת חדש/ה</h3>
+                <div style="display:flex; gap:10px;">
+                    <div style="flex:1;"><h4>שם פרטי (חובה):</h4><input type="text" id="newPatientFirstName"></div>
+                    <div style="flex:1;"><h4>שם משפחה (חובה):</h4><input type="text" id="newPatientLastName"></div>
+                </div>
+                <div style="display:flex; gap:10px;">
+                    <div style="flex:1;"><h4>ת.ז:</h4><input type="text" id="newPatientId"></div>
+                    <div style="flex:1;"><h4>טלפון הורה 1:</h4><input type="tel" id="newPatientPhone"></div>
+                </div>
+                <div style="display:flex; gap:10px;">
+                    <div style="flex:1;"><h4>תאריך לידה:</h4><input type="date" id="newPatientDob"></div>
+                    <div style="flex:1;"><h4>מכסת טיפולים (לא חובה):</h4><input type="number" id="newPatientTotalSessions" placeholder="למשל 12"></div>
+                </div>
+                <h4>אימייל:</h4><input type="email" id="newPatientEmail">
+                <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #cbd5e1;">
+                    <h4>תעריף קבוע למפגש (₪):</h4>
+                    <input type="number" id="newPatientBasePrice" value="300">
+                </div>
+                
+                <button class="btn-success" onclick="saveNewPatient(false)">💾 פתיחת תיק</button>
+                <button class="btn-primary" style="background:#0ea5e9; color:white; border-radius:18px; font-weight:bold; padding:15px; width:100%; margin-top:10px; border:none; cursor:pointer;" onclick="saveNewPatient(true)">📅 פתיחת תיק ומעבר לשיבוץ ביומן</button>
+                <button class="btn-raw" style="width:100%; margin-top:10px;" onclick="closeModal('addPatientModal')">ביטול</button>
+            </div>`;
+            
+            modal = document.createElement('div');
+            modal.id = 'addPatientModal';
+            modal.className = 'modal';
+            modal.innerHTML = modalHTML;
+            document.body.appendChild(modal);
         }
+
+        const fieldsToClear = [
+            'newPatientFirstName', 'newPatientLastName', 'newPatientId', 
+            'newPatientDob', 'newPatientPhone', 'newPatientEmail', 'newPatientTotalSessions'
+        ];
+        
+        fieldsToClear.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.value = "";
+        });
+
+        const priceEl = document.getElementById('newPatientBasePrice');
+        if (priceEl) priceEl.value = "300";
+
+        modal.style.display = 'block';
     }
 
     function saveNewPatient(goToSchedule) {
@@ -1820,7 +1656,7 @@
         if(nextNum < 1) nextNum = 1;
         
         document.getElementById('sessionNumber').value = nextNum;
-        document.getElementById('sessionNotes').value = ""; document.getElementById('sessionPaid').checked = false; document.getElementById('sessionReceipt').checked = false;
+        document.getElementById('sessionNotes').value = ""; document.getElementById('sessionPaid').checked = false document.getElementById('sessionReceipt').checked = false;
         document.getElementById('sessionType').value = "טיפול"; 
         
         const savedReceiptSite = localStorage.getItem('clinicReceiptDefault') || "https://ypay.co.il/";

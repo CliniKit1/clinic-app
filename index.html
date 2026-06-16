@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מערכת ניהול קליניקה</title>
+    <title>CliniKit</title>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
         /* === משתנים ועיצוב בסיסי === */
@@ -104,6 +104,7 @@
 </head>
 <body>
 
+<!-- מסך התקנון / כניסה ראשונית -->
 <div id="tosModal" class="modal" style="background: rgba(15, 23, 42, 0.95); z-index: 99999;">
     <div class="modal-content" style="text-align: center; border: 4px solid var(--primary-color); margin-top: 10%;">
         <h2 style="color: var(--primary-color); font-size: 26px; margin-bottom:15px;">ברוכים הבאים למערכת! 👋</h2>
@@ -128,6 +129,7 @@
     </div>
 </div>
 
+<!-- חלון בחירת פורמט הורדה (מעודכן לטלפונים) -->
 <div id="exportModal" class="modal" style="z-index: 4000;">
     <div class="modal-content" style="max-width: 400px; text-align: center;">
         <h3 style="color:var(--primary-color); margin-bottom:5px;">📥 בחירת פורמט הורדה</h3>
@@ -140,6 +142,7 @@
     </div>
 </div>
 
+<!-- חלון מעבר בין מכשירים -->
 <div id="transferModal" class="modal" style="z-index: 9999;">
     <div class="modal-content" style="text-align: center;">
         <h2 style="color: var(--primary-color);">🔄 מעבר למכשיר אחר</h2>
@@ -205,6 +208,7 @@
         </div>
     </div>
 
+    <!-- התראת גיבוי מעודנת -->
     <div id="forcedBackupModal" class="modal" style="background: rgba(13, 148, 136, 0.95); z-index: 9999;">
         <div class="modal-content" style="text-align: center; border: 4px solid var(--secondary-color); margin-top: 5%;">
             <h2 style="color: var(--secondary-color); font-size: 24px;">💡 רגע לפני שמתחילים...</h2>
@@ -221,9 +225,12 @@
         <button onclick="openSettingsModal()" style="position: absolute; left: 15px; top: 15px; width: 45px; height: 45px; border-radius: 50%; background: #f1f5f9; color: #475569; padding: 0; font-size: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border:1px solid #cbd5e1; z-index: 100;">⚙️</button>
 
        <div style="text-align: center; margin-bottom: 5px; padding-top: 10px;">
-            <img id="mainLogo" src="" alt="לוגו הקליניקה" style="max-height: 100px; width: auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05)); display:none;">
+            <h1 style="color: var(--primary-color); text-align: center; margin-bottom: 0px; font-size: 32px; font-weight: 900;">CliniKit</h1>
+            <p style="text-align: center; color: var(--secondary-color); font-weight: bold; margin-top: 5px; margin-bottom: 15px;">פשוט לנהל קליניקה</p>
+            <img id="mainLogo" src="" alt="לוגו הקליניקה" style="max-height: 100px; width: auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05)); display:none; margin: 0 auto;">
         </div>
         
+        <!-- מסך מטופלים -->
         <div id="view-patients" class="view-screen active-screen">
             <div class="action-bar" style="margin-bottom:15px; justify-content:center;">
                 <button class="btn-raw" style="border-color:var(--primary-color); color:var(--primary-color); font-weight:bold; border-radius:15px; margin-top:0; width:100%;" onclick="openTransferModal()">🔄 גיבוי ומעבר למכשיר אחר</button>
@@ -243,6 +250,7 @@
             <button class="btn-raw" style="border-style:dashed; margin-top:20px; border-radius:15px; width:100%;" onclick="showScreen('view-archive')">🗄️ ארכיון מטופלים</button>
         </div>
 
+        <!-- מסך ארכיון -->
         <div id="view-archive" class="view-screen">
             <div class="action-bar">
                 <button class="btn-small btn-back" onclick="showScreen('view-patients')">🔙 חזרה לרשימת המטופלים</button>
@@ -252,6 +260,7 @@
             <div id="archivedPatientList"></div>
         </div>
 
+        <!-- מסך פרטי מטופל (ראשי) -->
         <div id="view-patient-detail" class="view-screen">
             <div class="action-bar" style="margin-bottom: 5px;">
                 <button class="btn-small btn-back" onclick="goBackToPatientsOrArchive()">🔙 חזרה לרשימת המטופלים</button>
@@ -289,6 +298,7 @@
                 <div class="patient-menu-card full-width" onclick="openSection('sec-next')"><span class="p-icon">💡</span><span class="p-text" style="font-size:16px;">תכנון הטיפול הבא</span></div>
             </div>
 
+            <!-- לשוניות מטופל -->
             <div id="sec-session" class="patient-section">
                 <button class="btn-small btn-back" style="margin-bottom:10px;" onclick="closeSection()">🔙 חזרה לתפריט התיק</button>
                 <div class="action-box" style="margin-top:0;">
@@ -600,6 +610,7 @@
             </div>
         </div>
 
+        <!-- מודלים פנימיים -->
         <div id="addPatientModal" class="modal">
             <div class="modal-content">
                 <h3>👥 רישום מטופל/ת חדש/ה</h3>
@@ -737,6 +748,7 @@
             </div>
         </div>
 
+        <!-- תחתית האפליקציה: קרדיט קבוע -->
         <div style="text-align: center; padding: 20px; font-size: 13px; color: #94a3b8; margin-top: 30px; border-top: 1px dashed #e2e8f0; line-height: 1.5;" class="no-print">
             &copy; כל הזכויות שמורות לאסתר בן פורת | 054-6703332 | esterayelet@gmail.com <br>
             <small style="display:block; margin-top:5px; font-weight:bold;">אין להעתיק או להעביר תוכנה זו ללא אישור מפורש מהמפתחת.</small>
@@ -841,12 +853,14 @@
             </div>
         `;
         
-        window.print();
-        
+        // הגדלת זמן ההשהיה במיוחד לדפדפנים בנייד
         setTimeout(() => {
-            printArea.innerHTML = '';
-            document.title = originalTitle;
-        }, 1000);
+            window.print();
+            setTimeout(() => {
+                printArea.innerHTML = '';
+                document.title = originalTitle;
+            }, 2000);
+        }, 500);
     }
 
     // ייצוא וורד מתקדם עם תמיכה בשיתוף למובייל
@@ -865,23 +879,24 @@
                 navigator.share({
                     files: [file],
                     title: filename,
-                    text: 'מצורף הקובץ מהקליניקה'
+                    text: 'מצורף הקובץ מ-CliniKit'
                 }).catch(e => console.log('Share canceled'));
-                return; // יוצא מהפונקציה אם השיתוף הצליח
+                return; 
             }
         } catch(e) { }
 
-        // במידה וזה מחשב רגיל - הורדה קלאסית
+        // במידה וזה מחשב רגיל - הורדה קלאסית עם מנגנון מותאם
         const url = URL.createObjectURL(blob);
         const downloadLink = document.createElement("a");
         downloadLink.href = url;
         downloadLink.download = filename + '.doc';
+        downloadLink.target = "_blank";
         document.body.appendChild(downloadLink);
         downloadLink.click();
         setTimeout(() => {
             document.body.removeChild(downloadLink);
             URL.revokeObjectURL(url);
-        }, 250);
+        }, 1000);
     }
 
     // כלים למייל וניווט
@@ -964,7 +979,7 @@
 
         if (savedLogo && savedLogo !== 'none') {
             mainLogo.src = savedLogo;
-            mainLogo.style.display = 'inline-block';
+            mainLogo.style.display = 'block';
             if(autoOpt) autoOpt.style.display = 'block';
         } else {
             mainLogo.style.display = 'none';
@@ -1050,7 +1065,7 @@
         const downloadAnchorNode = document.createElement('a');
         downloadAnchorNode.setAttribute("href", dataStr);
         const dateStr = new Date().toLocaleDateString('he-IL').replace(/\./g, '-');
-        downloadAnchorNode.setAttribute("download", `גיבוי_קליניקה_${dateStr}.json`);
+        downloadAnchorNode.setAttribute("download", `גיבוי_CliniKit_${dateStr}.json`);
         document.body.appendChild(downloadAnchorNode);
         downloadAnchorNode.click();
         downloadAnchorNode.remove();
@@ -1313,7 +1328,7 @@
         document.getElementById('patientMenuGrid').style.display = 'grid';
     }
 
-    // === תיקון באג הקלטה כפולה לאנדרואיד ===
+    // === תיקון באג הקלטה כפולה לאנדרואיד (שיאומי וכו') ===
     let isDictating = false;
     let activeRecognition = null;
     let originalTextForDictation = "";
@@ -1339,38 +1354,38 @@
         btn.innerHTML = "🔴 מקליט... (לחצי לעצירה)"; 
         btn.style.color = "red";
         
-        // שמירת הטקסט שהיה בתיבה לפני תחילת ההקלטה
         originalTextForDictation = ta.value.trim();
 
         const Speech = window.SpeechRecognition || window.webkitSpeechRecognition;
         activeRecognition = new Speech(); 
         activeRecognition.lang = 'he-IL';
-        activeRecognition.continuous = true;
+        
+        // החלפה ל-false מונעת את שכפול המילים במערכות אנדרואיד שמדפיסות כל משפט שוב ושוב
+        activeRecognition.continuous = false; 
         activeRecognition.interimResults = true;
 
         activeRecognition.onresult = (e) => { 
-            let currentSessionFinal = '';
-            let currentSessionInterim = '';
+            let interimTranscript = '';
+            let finalTranscript = '';
             
-            // אנחנו בונים את המחרוזת מאפס בכל פעם כדי למנוע כפילויות של המקלדת בנייד
-            for (let i = 0; i < e.results.length; ++i) {
+            for (let i = e.resultIndex; i < e.results.length; ++i) {
                 if (e.results[i].isFinal) {
-                    currentSessionFinal += e.results[i][0].transcript + " ";
+                    finalTranscript += e.results[i][0].transcript + " ";
                 } else {
-                    currentSessionInterim += e.results[i][0].transcript;
+                    interimTranscript += e.results[i][0].transcript;
                 }
             }
             
-            let newText = originalTextForDictation;
-            if (newText && (currentSessionFinal || currentSessionInterim)) newText += "\n";
-            newText += currentSessionFinal + currentSessionInterim;
+            if (finalTranscript) {
+                originalTextForDictation += (originalTextForDictation ? " " : "") + finalTranscript.trim();
+            }
             
-            ta.value = newText;
+            ta.value = originalTextForDictation + (interimTranscript ? " " + interimTranscript : "");
         };
 
+        // מפעיל את ההקלטה מחדש באופן שקוף אחרי כל משפט
         activeRecognition.onend = () => { 
             if (isDictating) {
-                // הדפדפן עצר את ההקלטה אוטומטית כי היה שקט, נעדכן את טקסט הבסיס ונתחיל שוב
                 originalTextForDictation = ta.value.trim();
                 try { activeRecognition.start(); } catch(e) {}
             } else {
@@ -1632,7 +1647,7 @@
         
         html += `
             <div style="margin-top:40px; padding-top:20px; border-top:1px solid #cbd5e1; display:flex; justify-content:space-between; font-size:13px; color:#64748b;">
-                <span>הופק באמצעות מערכת ניהול קליניקה</span>
+                <span>הופק באמצעות מערכת CliniKit</span>
                 <span>חתימת המטפל/ת: _________________</span>
             </div>
         `;
@@ -1641,8 +1656,8 @@
     }
 
     function getFinancialHTML(reportType) {
-        let t = reportType === 'expense' ? document.getElementById('expensePeriodType').value : document.getElementById('financePeriodType').value;
-        let f = t==='month' ? (reportType === 'expense' ? document.getElementById('expenseMonth').value : document.getElementById('financeMonth').value) : (reportType === 'expense' ? document.getElementById('expenseYear').value : document.getElementById('financeYear').value);
+        let t = document.getElementById('financePeriodType') ? document.getElementById('financePeriodType').value : 'month'; 
+        let f = t==='month' ? document.getElementById('financeMonth').value : document.getElementById('financeYear').value;
         
         if(!f) {
             alert("אנא בחרי תקופה קודם.");

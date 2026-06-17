@@ -1186,7 +1186,7 @@ ${htmlContent}
         callGemini(prompt, (res) => { document.getElementById('nextPlanInput').value = res.trim(); });
     }
 
-    function generateTomorrowReminders() {
+function generateTomorrowReminders() {
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
         const day = tomorrow.getDay();
@@ -1201,13 +1201,14 @@ ${htmlContent}
 
         patients.forEach((p, idx) => {
             if (!p.archived && p.weeklyDay === day && p.weeklyTime) {
-                items.push({ time: p.weeklyTime, text: p.name, phone: p.parentPhone1, isBreak: false });
+                // משכנו לכאן גם את כתובת המייל כדי שנוכל להשתמש בה
+                items.push({ time: p.weeklyTime, text: p.name, phone: p.parentPhone1, email: p.parentEmail, isBreak: false });
             }
         });
 
         breaks.forEach(b => {
             if (b.day === day && b.time && b.isOther) {
-                items.push({ time: b.time, text: b.title, phone: null, isBreak: true });
+                items.push({ time: b.time, text: b.title, phone: null, email: null, isBreak: true });
             }
         });
 
@@ -1218,15 +1219,31 @@ ${htmlContent}
         } else {
             let html = "<ul style='list-style:none; padding:0; margin:0;'>";
             items.forEach(item => {
-                let waBtn = item.phone ? `<button class='btn-small btn-wa' style='padding:4px 8px; font-size:12px;' onclick="openExternalApp('https://wa.me/${item.phone.replace(/\D/g,'').replace(/^0/,'972')}?text=${encodeURIComponent('היי! מזכירה שיש לנו תור מחר בשעה ' + item.time + '. נתראה!')}')">💬 תזכורת</button>` : '';
+                let msg = 'היי! מזכירה שיש לנו תור מחר בשעה ' + item.time + '. נתראה!';
+                
+                let waBtn = '';
+                if (item.phone) {
+                    let waUrl = `https://wa.me/${item.phone.replace(/\D/g,'').replace(/^0/,'972')}?text=${encodeURIComponent(msg)}`;
+                    // כאן אנחנו משתמשים בפונקציה הבטוחה שכבר קיימת אצלך
+                    waBtn = `<button class='btn-small btn-wa' style='padding:4px 8px; font-size:12px; margin:0 0 0 5px;' onclick="openExternalApp('${waUrl}')">💬 ווצאפ</button>`;
+                }
+                
+                let emailBtn = '';
+                if (item.email) {
+                    // שימוש בפונקציה החכמה שלך שפותחת ישירות את האפליקציה בנייד!
+                    emailBtn = `<button class='btn-small btn-email' style='padding:4px 8px; font-size:12px; margin:0;' onclick="openMailto('${item.email}', 'תזכורת לתור מחר', '${msg}')">📧 מייל</button>`;
+                }
+                
                 let icon = item.isBreak ? '⭐' : '👤';
-                html += `<li style='background:white; padding:8px; border-radius:8px; margin-bottom:5px; display:flex; justify-content:space-between; align-items:center; border:1px solid #cbd5e1;'><span style='font-size:14px;'><b>${item.time}</b> - ${icon} ${item.text}</span> ${waBtn}</li>`;
+                html += `<li style='background:white; padding:8px; border-radius:8px; margin-bottom:5px; display:flex; justify-content:space-between; align-items:center; border:1px solid #cbd5e1;'>
+                            <span style='font-size:14px;'><b>${item.time}</b> - ${icon} ${item.text}</span> 
+                            <div style='display:flex;'>${waBtn}${emailBtn}</div>
+                         </li>`;
             });
             html += "</ul>";
             cont.innerHTML = html;
         }
     }
-
     function showScreen(id) {
         document.querySelectorAll('.view-screen').forEach(s => s.classList.remove('active-screen'));
         document.getElementById(id).classList.add('active-screen');

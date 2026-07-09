@@ -2552,5 +2552,78 @@ function generateTomorrowReminders() {
         showScreen('view-patients');
     }
 </script>
+    <script>
+(function () {
+    var CLICKIT_URL = "https://clickit-dde03.web.app/";
+    var SURVEY_URL  = "https://forms.gle/ERsaTjxwD7S79ESF9";
+    var WA_NUMBER = "972546703332";
+    var EMAIL     = "clickit.ti@gmail.com";
+
+    function openLink(url, name) {
+        if (!url || url === "#") { alert("הקישור ל" + name + " עדיין לא הוגדר."); return; }
+        var a = document.createElement('a');
+        a.href = url; a.target = '_blank'; a.rel = 'noopener';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    }
+    function downloadBackup() {
+        if (typeof executeDailyBackup === 'function') { executeDailyBackup(); }
+        else { alert("לא הצלחתי להפעיל את הורדת הגיבוי. נסי לרענן את הדף."); }
+    }
+    window.__clickit_backup = downloadBackup;
+    window.__clickit_wa     = function(){ openLink("https://wa.me/" + WA_NUMBER, "ווצאפ"); };
+    window.__clickit_email  = function(){ window.location.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent("שאלה לגבי המעבר ל-Clickit"); };
+    window.__clickit_close  = function(){ var el = document.getElementById('clickitMigrationOverlay'); if (el) el.style.display = 'none'; };
+    window.__clickit_go     = function(){ openLink(CLICKIT_URL, "Clickit החדשה"); };
+    window.__clickit_survey = function(){ openLink(SURVEY_URL, "סקר"); };
+
+    function buildScreen() {
+        if (document.getElementById('clickitMigrationOverlay')) return;
+        var overlay = document.createElement('div');
+        overlay.id = 'clickitMigrationOverlay';
+        overlay.setAttribute('dir', 'rtl');
+        overlay.style.cssText = "position:fixed; inset:0; width:100%; height:100%; z-index:100001; background:rgba(15,23,42,0.92); overflow-y:auto; font-family:'Rubik',Arial,sans-serif; direction:rtl; display:flex; align-items:flex-start; justify-content:center; padding:20px 0;";
+        overlay.innerHTML =
+        '<div style="background:#ffffff; color:#475569; width:92%; max-width:560px; margin:5% auto; border-radius:26px; padding:30px 26px; border:5px solid #3a7d8c; box-shadow:0 20px 45px rgba(0,0,0,0.35);">' +
+            '<p style="font-size:17px; line-height:1.6; text-align:center; margin:0 0 6px; color:#334155;">' +
+                '<b>תודה! שדרוג המערכת הזה הוא בזכותכן!</b> 💛<br>' +
+                'תודה על הפידבקים. <b>CliniKit</b> השתדרגה ל-<b>Clickit</b> – נגישה יותר, חכמה יותר ומתקדמת הרבה יותר!' +
+            '</p>' +
+            '<p style="font-size:16px; font-weight:700; color:#3a7d8c; text-align:center; margin:20px 0 12px;">כדי להמשיך לעבוד:</p>' +
+            '<div style="background:#f0fdf4; border:2px solid #22c55e; border-radius:16px; padding:16px; margin-bottom:14px;">' +
+                '<b style="display:block; margin-bottom:8px; color:#166534; font-size:15px;">1. הורידי גיבוי</b>' +
+                '<span style="font-size:14px; display:block; margin-bottom:10px;">שמירת כל הנתונים של הקליניקה למכשיר שלך.</span>' +
+                '<button onclick="window.__clickit_backup()" style="width:100%; background:#22c55e; color:#fff; border:none; border-radius:14px; padding:14px; font-size:16px; font-weight:700; cursor:pointer;">📥 לחצי כאן להורדת הגיבוי</button>' +
+            '</div>' +
+            '<div style="background:#f0fdfa; border:2px solid #3a7d8c; border-radius:16px; padding:16px; margin-bottom:14px;">' +
+                '<b style="display:block; margin-bottom:8px; color:#3a7d8c; font-size:15px;">2. עברי לבית החדש</b>' +
+                '<span style="font-size:14px; display:block; margin-bottom:10px;">היכנסי ל-Clickit וטעני את קובץ הגיבוי במסך הכניסה.</span>' +
+                '<button onclick="window.__clickit_go()" style="width:100%; background:#3a7d8c; color:#fff; border:none; border-radius:14px; padding:14px; font-size:16px; font-weight:700; cursor:pointer;">🚀 כניסה ל-Clickit החדשה</button>' +
+            '</div>' +
+            '<div style="background:#fffbeb; border:2px dashed #eab348; border-radius:16px; padding:16px; margin-bottom:14px;">' +
+                '<b style="display:block; margin-bottom:8px; color:#b45309; font-size:15px;">🎁 הטבה למשתתפות הפיילוט</b>' +
+                '<span style="font-size:14px; display:block; line-height:1.6; margin-bottom:12px;">' +
+                    'המחיר הרשמי עודכן ל-<b>599 ש"ח</b>. השתמשת במערכת בתקופת הפיילוט? מלאי את הסקר, ואם תימצאי זכאית — תקבלי קוד קופון ש<b>מקפיא לך את המחיר על 299 ש"ח בלבד</b>!' +
+                '</span>' +
+                '<button onclick="window.__clickit_survey()" style="width:100%; background:#eab348; color:#fff; border:none; border-radius:14px; padding:13px; font-size:15px; font-weight:700; cursor:pointer;">📝 מילוי הסקר לקבלת הקופון</button>' +
+            '</div>' +
+            '<div style="text-align:center; font-size:14px; color:#64748b; margin-top:18px; line-height:1.6;">' +
+                'לכל שאלה או עזרה, אנחנו כאן:' +
+                '<div style="display:flex; gap:10px; margin-top:10px;">' +
+                    '<button onclick="window.__clickit_wa()" style="flex:1; background:#25d366; color:#fff; border:none; border-radius:12px; padding:11px; font-size:14px; font-weight:700; cursor:pointer;">💬 ווצאפ</button>' +
+                    '<button onclick="window.__clickit_email()" style="flex:1; background:#eab348; color:#fff; border:none; border-radius:12px; padding:11px; font-size:14px; font-weight:700; cursor:pointer;">📧 מייל</button>' +
+                '</div>' +
+                '<div style="margin-top:8px; font-size:13px;">clickit.ti@gmail.com | 054-6703332</div>' +
+            '</div>' +
+            '<div style="text-align:center; margin-top:18px; padding-top:14px; border-top:1px dashed #e2e8f0;">' +
+                '<a href="#" onclick="window.__clickit_close(); return false;" style="color:#94a3b8; font-size:13px; text-decoration:underline;">כבר גיביתי — כניסה זמנית לגרסה הישנה</a>' +
+            '</div>' +
+        '</div>';
+        document.body.appendChild(overlay);
+    }
+
+    if (document.readyState === 'complete' || document.readyState === 'interactive') { setTimeout(buildScreen, 300); }
+    else { window.addEventListener('load', function () { setTimeout(buildScreen, 300); }); }
+})();
+</script>
 </body>
 </html>
